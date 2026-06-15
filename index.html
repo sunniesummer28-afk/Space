@@ -109,7 +109,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g);color:var(--b);di
 .cadd{position:absolute;bottom:10px;right:10px;z-index:3;background:var(--w);border:1.5px solid var(--p);color:var(--p);border-radius:50%;width:25px;height:25px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;cursor:pointer;transition:.15s}
 .cadd:hover{background:var(--p);color:#fff}
 .cadd.added{background:var(--ok);border-color:var(--ok);color:#fff}
-.cimg{width:100%;height:130px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.cimg{width:100%;height:130px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;overflow:hidden}
+.cimg img{width:100%;height:100%;object-fit:cover;display:block}
 .ri1{background:linear-gradient(135deg,#c5d8f8,#90b4ee)}
 .ri2{background:linear-gradient(135deg,#b8ccf5,#88aaeb)}
 .ri3{background:linear-gradient(135deg,#ccdaf9,#98b8ee)}
@@ -261,7 +262,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g);color:var(--b);di
 .cc-num{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-bottom:8px;color:#fff}
 .cc-theme{font-size:14px;font-weight:800;margin-bottom:4px;line-height:1.3}
 .cc-desc{font-size:12px;color:var(--s);margin-bottom:12px;line-height:1.5}
-.cc-img{width:100%;height:120px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:10px}
+.cc-img{width:100%;height:120px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:10px;overflow:hidden}
+.cc-img img{width:100%;height:100%;object-fit:cover;display:block;border-radius:9px}
 .cc-name{font-size:13px;font-weight:700;margin-bottom:2px}
 .cc-sub{font-size:11.5px;color:var(--s)}
 .cc-price{font-size:13px;font-weight:700;color:var(--p);margin-top:6px}
@@ -371,7 +373,8 @@ canvas#radarChart{max-width:200px}
 .cart-item{background:var(--w);border-radius:var(--r);border:1px solid var(--br);padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:.15s}
 .cart-item:hover{border-color:var(--p)}
 .cart-chk input{accent-color:var(--p);width:16px;height:16px;cursor:pointer}
-.cart-img{width:70px;height:55px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.cart-img{width:70px;height:55px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden}
+.cart-img img{width:100%;height:100%;object-fit:cover;display:block}
 .cart-info{flex:1}
 .cart-name{font-size:13.5px;font-weight:700;margin-bottom:3px}
 .cart-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px}
@@ -511,7 +514,7 @@ canvas#radarChart{max-width:200px}
     <button class="ni" onclick="goPage('p-reserve')" id="ni-reserve"><span class="ic">📋</span>예약 현황</button>
     <button class="ni" onclick="goPage('p6')" id="ni-cart"><span class="ic">🛒</span>장바구니<span class="nbadge" id="cart-badge">3</span></button>
     <button class="ni" onclick="goPage('p7')" id="ni-usage"><span class="ic">🕐</span>이용 내역</button>
-    <button class="ni" id="ni-report"><span class="ic">📊</span>보고서</button>
+    <button class="ni" onclick="goPage('p-report')" id="ni-report"><span class="ic">📊</span>보고서</button>
     <button class="ni" id="ni-fav"><span class="ic">♡</span>즐겨찾기</button>
     <button class="ni" id="ni-mypage"><span class="ic">👤</span>마이페이지</button>
   </nav>
@@ -523,8 +526,8 @@ canvas#radarChart{max-width:200px}
 <header class="tb">
   <div class="tbi">🔔</div>
   <div class="tbi">❓</div>
-  <div class="uav">이</div>
-  <span class="uname">이안선 ∨</span>
+  <div class="uav">오</div>
+  <span class="uname">오정세 ∨</span>
 </header>
 
 <!-- MAIN -->
@@ -660,9 +663,9 @@ canvas#radarChart{max-width:200px}
   </div>
   <div style="font-size:14.5px;font-weight:700;margin-bottom:14px">AI 추천 3안 한눈에 비교</div>
   <div class="compare-cards">
-    <div class="cc best"><div class="cc-num" style="background:var(--p)">1안</div><div class="cc-theme">가성비 및 접근성 최적화</div><div class="cc-desc">서울역 도보 3분, 합리적 가격의 효율적인 선택</div><div class="cc-img ri1">🏢</div><div class="cc-name">위워크 서울역점 20F 대회의실</div><div class="cc-sub">회의실 · 서울역 도보 3분</div><div class="cc-price">3시간 기준 165,000원 ~ ⭐ 4.8 (120)</div></div>
-    <div class="cc"><div class="cc-num" style="background:#10B981">2안</div><div class="cc-theme">프라이빗한 프리미엄 공간</div><div class="cc-desc">도심 전망과 프라이빗한 환경의 격조 높은 공간</div><div class="cc-img ri2">🏙️</div><div class="cc-name">스파크플러스 서울역센터</div><div class="cc-sub">회의실 · 서울역 도보 5분</div><div class="cc-price">3시간 기준 150,000원 ~ ⭐ 4.6 (98)</div></div>
-    <div class="cc"><div class="cc-num" style="background:#8B5CF6">3안</div><div class="cc-theme">이색 팀빌딩 맞춤형</div><div class="cc-desc">새다른 분위기와 팀빌딩에 최적화된 공간</div><div class="cc-img ri3">🏛️</div><div class="cc-name">패스트파이브 서울역1호점</div><div class="cc-sub">회의실 · 서울역 도보 4분</div><div class="cc-price">3시간 기준 140,000원 ~ ⭐ 4.5 (87)</div></div>
+    <div class="cc best"><div class="cc-num" style="background:var(--p)">1안</div><div class="cc-theme">가성비 및 접근성 최적화</div><div class="cc-desc">서울역 도보 3분, 합리적 가격의 효율적인 선택</div><div class="cc-img ri1"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=240&fit=crop" alt="위워크 서울역점" onerror="this.parentElement.innerHTML='🏢'"></div><div class="cc-name">위워크 서울역점 20F 대회의실</div><div class="cc-sub">회의실 · 서울역 도보 3분</div><div class="cc-price">3시간 기준 165,000원 ~ ⭐ 4.8 (120)</div></div>
+    <div class="cc"><div class="cc-num" style="background:#10B981">2안</div><div class="cc-theme">프라이빗한 프리미엄 공간</div><div class="cc-desc">도심 전망과 프라이빗한 환경의 격조 높은 공간</div><div class="cc-img ri2"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=240&fit=crop" alt="스파크플러스 서울역센터" onerror="this.parentElement.innerHTML='🏙️'"></div><div class="cc-name">스파크플러스 서울역센터</div><div class="cc-sub">회의실 · 서울역 도보 5분</div><div class="cc-price">3시간 기준 150,000원 ~ ⭐ 4.6 (98)</div></div>
+    <div class="cc"><div class="cc-num" style="background:#8B5CF6">3안</div><div class="cc-theme">이색 팀빌딩 맞춤형</div><div class="cc-desc">새다른 분위기와 팀빌딩에 최적화된 공간</div><div class="cc-img ri3"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=240&fit=crop" alt="패스트파이브 서울역1호점" onerror="this.parentElement.innerHTML='🏛️'"></div><div class="cc-name">패스트파이브 서울역1호점</div><div class="cc-sub">회의실 · 서울역 도보 4분</div><div class="cc-price">3시간 기준 140,000원 ~ ⭐ 4.5 (87)</div></div>
   </div>
   <div class="compare-meta">
     <div class="radar-wrap">
@@ -734,7 +737,7 @@ canvas#radarChart{max-width:200px}
       <div class="parti-wrap">
         <h5>참여 현황 — 4명 참여</h5>
         <div class="parti-list">
-          <div class="parti-mem"><div class="parti-av" style="background:var(--p)">이</div><span class="parti-name">이안선(나)</span></div>
+          <div class="parti-mem"><div class="parti-av" style="background:var(--p)">오</div><span class="parti-name">오정세(나)</span></div>
           <div class="parti-mem"><div class="parti-av" style="background:#10B981">최</div><span class="parti-name">최유진</span></div>
           <div class="parti-mem"><div class="parti-av" style="background:#8B5CF6">박</div><span class="parti-name">박민수</span></div>
           <div class="parti-mem"><div class="parti-av" style="background:#F59E0B">정</div><span class="parti-name">정다은</span></div>
@@ -825,10 +828,10 @@ canvas#radarChart{max-width:200px}
   <div class="bc" onclick="goPage('p2')">← 장바구니</div>
   <div class="cart-head"><div><h2>장바구니</h2><p>회의실 2개, 회식 장소 1개 선택하셨습니다.</p></div><button class="btn-sel-del">선택 항목 삭제</button></div>
   <div class="cart-section-title">회의실 (2)</div>
-  <div class="cart-item"><div class="cart-chk"><input type="checkbox" checked></div><div class="cart-img ri1">🏢</div><div class="cart-info"><div class="cart-name">위워크 서울역점 20F 대회의실</div><div class="cart-tags"><span class="ct">회의실</span><span class="ct">서울역 도보 3분</span><span class="ct">20명</span><span class="ct">화상회의 가능</span><span class="ct">간식 제공</span></div><div class="cart-date">📅 2024.06.05 (수) 14:00 ~ 17:00 (3시간)</div><div style="font-size:11.5px;color:var(--s);margin-bottom:5px">화상회의 시스템, 화이트보드, 간식/음료 무제한 제공</div><div class="cart-meta"><span>🚗 주차 가능</span><span>💳 법인카드</span><span>🧾 세금계산서</span></div></div><div style="text-align:right"><div class="cart-price">165,000원</div><button class="btn-del">삭제</button></div></div>
-  <div class="cart-item"><div class="cart-chk"><input type="checkbox" checked></div><div class="cart-img ri2">🏙️</div><div class="cart-info"><div class="cart-name">스파크플러스 서울역센터</div><div class="cart-tags"><span class="ct">회의실</span><span class="ct">서울역 도보 5분</span><span class="ct">20명</span><span class="ct">화상회의 가능</span><span class="ct">간식 제공</span></div><div class="cart-date">📅 2024.06.05 (수) 14:00 ~ 17:00 (3시간)</div><div style="font-size:11.5px;color:var(--s);margin-bottom:5px">프라이빗 공간, 4K 화상회의 시스템, 베이커리 간식 제공</div><div class="cart-meta"><span>🚗 주차 가능</span><span>💳 법인카드</span><span>🧾 세금계산서</span></div></div><div style="text-align:right"><div class="cart-price">150,000원</div><button class="btn-del">삭제</button></div></div>
+  <div class="cart-item"><div class="cart-chk"><input type="checkbox" checked></div><div class="cart-img ri1"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&h=160&fit=crop" alt="위워크 서울역점" onerror="this.parentElement.innerHTML='🏢'"></div><div class="cart-info"><div class="cart-name">위워크 서울역점 20F 대회의실</div><div class="cart-tags"><span class="ct">회의실</span><span class="ct">서울역 도보 3분</span><span class="ct">20명</span><span class="ct">화상회의 가능</span><span class="ct">간식 제공</span></div><div class="cart-date">📅 2024.06.05 (수) 14:00 ~ 17:00 (3시간)</div><div style="font-size:11.5px;color:var(--s);margin-bottom:5px">화상회의 시스템, 화이트보드, 간식/음료 무제한 제공</div><div class="cart-meta"><span>🚗 주차 가능</span><span>💳 법인카드</span><span>🧾 세금계산서</span></div></div><div style="text-align:right"><div class="cart-price">165,000원</div><button class="btn-del">삭제</button></div></div>
+  <div class="cart-item"><div class="cart-chk"><input type="checkbox" checked></div><div class="cart-img ri2"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=200&h=160&fit=crop" alt="스파크플러스 서울역센터" onerror="this.parentElement.innerHTML='🏙️'"></div><div class="cart-info"><div class="cart-name">스파크플러스 서울역센터</div><div class="cart-tags"><span class="ct">회의실</span><span class="ct">서울역 도보 5분</span><span class="ct">20명</span><span class="ct">화상회의 가능</span><span class="ct">간식 제공</span></div><div class="cart-date">📅 2024.06.05 (수) 14:00 ~ 17:00 (3시간)</div><div style="font-size:11.5px;color:var(--s);margin-bottom:5px">프라이빗 공간, 4K 화상회의 시스템, 베이커리 간식 제공</div><div class="cart-meta"><span>🚗 주차 가능</span><span>💳 법인카드</span><span>🧾 세금계산서</span></div></div><div style="text-align:right"><div class="cart-price">150,000원</div><button class="btn-del">삭제</button></div></div>
   <div class="cart-section-title" style="margin-top:20px">회식 장소 (1)</div>
-  <div class="cart-item"><div class="cart-chk"><input type="checkbox" checked></div><div class="cart-img fi1">🥩</div><div class="cart-info"><div class="cart-name">온기정 서울역점</div><div class="cart-tags"><span class="ct">서울역 도보 6분</span><span class="ct">한식·고기구이</span><span class="ct">최대 30명</span><span class="ct">주차 가능</span><span class="ct">룸 있음</span></div><div class="cart-date">📅 2024.06.05 (수) 18:00 이후</div><div style="font-size:11.5px;color:var(--s);margin-bottom:5px">프라이빗 룸 보유, 단체 코스 메뉴, 깔끔한 분위기</div><div class="cart-meta"><span>💳 법인카드</span><span>🧾 세금계산서</span></div></div><div style="text-align:right"><div class="cart-price">900,000원</div><button class="btn-del">삭제</button></div></div>
+  <div class="cart-item"><div class="cart-chk"><input type="checkbox" checked></div><div class="cart-img fi1"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=200&h=160&fit=crop" alt="온기정 서울역점" onerror="this.parentElement.innerHTML='🥩'"></div><div class="cart-info"><div class="cart-name">온기정 서울역점</div><div class="cart-tags"><span class="ct">서울역 도보 6분</span><span class="ct">한식·고기구이</span><span class="ct">최대 30명</span><span class="ct">주차 가능</span><span class="ct">룸 있음</span></div><div class="cart-date">📅 2024.06.05 (수) 18:00 이후</div><div style="font-size:11.5px;color:var(--s);margin-bottom:5px">프라이빗 룸 보유, 단체 코스 메뉴, 깔끔한 분위기</div><div class="cart-meta"><span>💳 법인카드</span><span>🧾 세금계산서</span></div></div><div style="text-align:right"><div class="cart-price">900,000원</div><button class="btn-del">삭제</button></div></div>
   <div class="cart-summary">
     <div class="cs-rows">
       <div class="cs-row"><span class="lbl">회의실 (2건)</span><span class="val">315,000원</span></div>
@@ -890,6 +893,129 @@ canvas#radarChart{max-width:200px}
   </div>
 </section>
 
+<!-- ══ PAGE REPORT ══ -->
+<section class="page" id="p-report">
+  <div style="padding:20px 24px 80px">
+    <div style="font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:4px">보고서</div>
+    <div style="font-size:13px;color:var(--s);margin-bottom:24px">생성된 보고서를 확인하고 다운로드하세요.</div>
+
+    <!-- 최신 보고서 카드 (크고 상세) -->
+    <div style="background:var(--w);border-radius:16px;border:2px solid var(--p);padding:24px;margin-bottom:32px;box-shadow:0 4px 24px rgba(27,110,243,.10)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:22px">📄</span>
+          <div>
+            <div style="font-size:16px;font-weight:900;letter-spacing:-.3px">회의 및 회식 장소 제안 보고서</div>
+            <div style="font-size:12px;color:var(--s);margin-top:2px">2024.05.21 생성 · 투표 완료</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button onclick="showToast('📄 PDF 다운로드를 시작합니다')" style="background:var(--w);border:1.5px solid var(--br);border-radius:9px;padding:8px 14px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--b);display:flex;align-items:center;gap:5px">📥 PDF</button>
+          <button onclick="openReportModal()" style="background:var(--p);border:none;border-radius:9px;padding:8px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;color:#fff;display:flex;align-items:center;gap:5px">보고서 보기 →</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:18px;margin-bottom:20px">
+        <div style="width:120px;height:90px;background:linear-gradient(135deg,#c5d8f8,#88b0ee);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:36px">🏢</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tr><td style="color:var(--s);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--br);width:110px">회의실</td><td style="padding:5px 8px;border-bottom:1px solid var(--br);font-weight:600">위워크 서울역점 20F 대회의실</td></tr>
+          <tr><td style="color:var(--s);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--br)">회식 장소</td><td style="padding:5px 8px;border-bottom:1px solid var(--br);font-weight:600">온기정 서울역점</td></tr>
+          <tr><td style="color:var(--s);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--br)">선정 결과</td><td style="padding:5px 8px;border-bottom:1px solid var(--br)"><span style="background:var(--pl);color:var(--p);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px">1안 선정</span> 가성비 및 접근성 최적화</td></tr>
+          <tr><td style="color:var(--s);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--br)">예상 비용</td><td style="padding:5px 8px;border-bottom:1px solid var(--br);font-weight:700;color:var(--p)">총 210,000원</td></tr>
+          <tr><td style="color:var(--s);font-weight:600;padding:5px 8px">이용 예정일</td><td style="padding:5px 8px">2024.06.05 (수) 14:00~</td></tr>
+        </table>
+      </div>
+
+      <!-- 승인 단계 -->
+      <div style="background:var(--g);border-radius:10px;padding:14px 18px;margin-bottom:16px">
+        <div style="font-size:12.5px;font-weight:700;margin-bottom:12px">승인 진행 현황</div>
+        <div style="display:flex;align-items:center;gap:0">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative">
+            <div style="position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--ok);z-index:0"></div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--okl);border:2px solid var(--ok);display:flex;align-items:center;justify-content:center;font-size:13px;z-index:1;position:relative">✅</div>
+            <div style="font-size:11px;font-weight:600;text-align:center">초안 생성</div>
+            <div style="font-size:10px;color:var(--s)">05.21 10:40</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative">
+            <div style="position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--br);z-index:0"></div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--pl);border:2px solid var(--p);display:flex;align-items:center;justify-content:center;font-size:13px;z-index:1;position:relative">📤</div>
+            <div style="font-size:11px;font-weight:600;text-align:center">승인요청</div>
+            <div style="font-size:10px;color:var(--s)">대기 중</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative">
+            <div style="position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--br);z-index:0"></div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--w);border:2px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:13px;z-index:1;position:relative">🔍</div>
+            <div style="font-size:11px;font-weight:600;text-align:center">검토 중</div>
+            <div style="font-size:10px;color:var(--s)">대기 중</div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--w);border:2px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:13px;z-index:1;position:relative">✔️</div>
+            <div style="font-size:11px;font-weight:600;text-align:center">승인 완료</div>
+            <div style="font-size:10px;color:var(--s)">대기 중</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 포함 내용 태그 -->
+      <div style="display:flex;flex-wrap:wrap;gap:7px">
+        <span style="background:var(--g);border:1px solid var(--br);border-radius:7px;padding:5px 11px;font-size:12px">📊 비교 리포트 요약</span>
+        <span style="background:var(--g);border:1px solid var(--br);border-radius:7px;padding:5px 11px;font-size:12px">🗳️ 투표 결과</span>
+        <span style="background:var(--g);border:1px solid var(--br);border-radius:7px;padding:5px 11px;font-size:12px">📋 상세 견적</span>
+        <span style="background:var(--g);border:1px solid var(--br);border-radius:7px;padding:5px 11px;font-size:12px">📸 장소 정보</span>
+        <span style="background:var(--g);border:1px solid var(--br);border-radius:7px;padding:5px 11px;font-size:12px">📝 이용 유의사항</span>
+      </div>
+    </div>
+
+    <!-- 이전 보고서 목록 -->
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--s)">이전 보고서</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+
+      <div style="background:var(--w);border-radius:12px;border:1px solid var(--br);padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="font-size:20px">📄</span>
+          <div>
+            <div style="font-size:13.5px;font-weight:700">4월 워크숍 장소 선정 보고서</div>
+            <div style="font-size:11.5px;color:var(--s);margin-top:2px">2024.04.10 · 판교역 근처 · 승인 완료</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="background:var(--okl);color:var(--ok);font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px">승인 완료</span>
+          <button onclick="showToast('📄 PDF 다운로드를 시작합니다')" style="background:none;border:1px solid var(--br);border-radius:7px;padding:5px 10px;font-size:11.5px;cursor:pointer;font-family:inherit;color:var(--s)">📥 PDF</button>
+        </div>
+      </div>
+
+      <div style="background:var(--w);border-radius:12px;border:1px solid var(--br);padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="font-size:20px">📄</span>
+          <div>
+            <div style="font-size:13.5px;font-weight:700">3월 팀빌딩 회식 장소 보고서</div>
+            <div style="font-size:11.5px;color:var(--s);margin-top:2px">2024.03.22 · 강남역 근처 · 승인 완료</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="background:var(--okl);color:var(--ok);font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px">승인 완료</span>
+          <button onclick="showToast('📄 PDF 다운로드를 시작합니다')" style="background:none;border:1px solid var(--br);border-radius:7px;padding:5px 10px;font-size:11.5px;cursor:pointer;font-family:inherit;color:var(--s)">📥 PDF</button>
+        </div>
+      </div>
+
+      <div style="background:var(--w);border-radius:12px;border:1px solid var(--br);padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="font-size:20px">📄</span>
+          <div>
+            <div style="font-size:13.5px;font-weight:700">1월 신년회 장소 제안 보고서</div>
+            <div style="font-size:11.5px;color:var(--s);margin-top:2px">2024.01.08 · 여의도 근처 · 승인 완료</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="background:var(--okl);color:var(--ok);font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px">승인 완료</span>
+          <button onclick="showToast('📄 PDF 다운로드를 시작합니다')" style="background:none;border:1px solid var(--br);border-radius:7px;padding:5px 10px;font-size:11.5px;cursor:pointer;font-family:inherit;color:var(--s)">📥 PDF</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- RIGHT SIDE PANEL -->
@@ -933,9 +1059,9 @@ canvas#radarChart{max-width:200px}
       <div id="shareError" style="display:none;font-size:12px;color:#EF4444;text-align:center;padding:4px 0"></div>
     </div>
     <div style="font-size:12px;color:var(--s);margin-bottom:8px">팀원 4명 참여 중</div>
-    <div class="members"><div class="mem" style="background:var(--p)">이</div><div class="mem" style="background:#10B981">최</div><div class="mem" style="background:#8B5CF6">박</div><div class="mem" style="background:#F59E0B">정</div><div class="mem-add">+</div></div>
+    <div class="members"><div class="mem" style="background:var(--p)">오</div><div class="mem" style="background:#10B981">최</div><div class="mem" style="background:#8B5CF6">박</div><div class="mem" style="background:#F59E0B">정</div><div class="mem-add">+</div></div>
     <div class="section-date">오늘</div>
-    <div class="chat-msg"><div class="chat-av" style="background:var(--p)">이</div><div class="chat-right"><div class="chat-meta"><strong>이안선 (나)</strong> 오전 10:30</div><div class="chat-bubble me">회의실은 1번이 장비도 좋고 뷰도 좋아 보이네요.</div><div class="chat-like">👍 1</div></div></div>
+    <div class="chat-msg"><div class="chat-av" style="background:var(--p)">오</div><div class="chat-right"><div class="chat-meta"><strong>오정세 (나)</strong> 오전 10:30</div><div class="chat-bubble me">회의실은 1번이 장비도 좋고 뷰도 좋아 보이네요.</div><div class="chat-like">👍 1</div></div></div>
     <div class="chat-msg"><div class="chat-av" style="background:#10B981">최</div><div class="chat-right"><div class="chat-meta"><strong>최유진</strong> 오전 10:31</div><div class="chat-bubble">저는 2번 스파크플러스가 더 조용해 보여요!</div></div></div>
     <div class="chat-msg"><div class="chat-av" style="background:#8B5CF6">박</div><div class="chat-right"><div class="chat-meta"><strong>박민수</strong> 오전 10:32</div><div class="chat-bubble">회의 후 식사는 1번 온기정 괜찮을 것 같아요. 룸도 있고 평가도 좋네요.</div><div class="chat-like">👍 2</div></div></div>
     <div class="chat-msg"><div class="chat-av" style="background:#F59E0B">정</div><div class="chat-right"><div class="chat-meta"><strong>정다은</strong> 오전 10:33</div><div class="chat-bubble">좋아요! 비교 리포트 한번 볼까요?</div></div></div>
@@ -963,9 +1089,9 @@ canvas#radarChart{max-width:200px}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 // ── STATE ──
-const pages = ['p1','p2','p3','p4','p5','p6','p7'];
+const pages = ['p1','p2','p3','p4','p5','p6','p7','p-report'];
 let currentPage = 'p1';
-const stepMap = {p1:1,p2:2,p3:4,p4:5,p5:6,p6:7,p7:8};
+const stepMap = {p1:1,p2:2,p3:4,p4:5,p5:6,p6:7,p7:8,'p-report':6};
 
 // ── PAGE NAVIGATION ──
 function goPage(id) {
@@ -992,7 +1118,7 @@ function updateStepBar(id) {
 }
 
 function updateNavActive(id) {
-  const map = {p1:'ni-home',p2:'ni-search',p6:'ni-cart',p7:'ni-usage'};
+  const map = {p1:'ni-home',p2:'ni-search',p6:'ni-cart',p7:'ni-usage','p-report':'ni-report'};
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
   const k = map[id];
   if(k) document.getElementById(k)?.classList.add('active');
@@ -1000,18 +1126,18 @@ function updateNavActive(id) {
 
 // ── SEARCH ──
 const ROOMS = [
-  {n:'위워크 서울역점 20F 대회의실',loc:'서울역 도보 3분',r:4.8,rv:120,cap:20,vc:true,sn:true,pk:true,pr:165000,img:'🏢',cls:'ri1',d:'고화질 화상회의 시스템, 화이트보드, 간식/음료 무제한 제공'},
-  {n:'스파크플러스 서울역센터',loc:'서울역 도보 5분',r:4.6,rv:98,cap:20,vc:true,sn:true,pk:true,pr:150000,img:'🏙️',cls:'ri2',d:'프라이빗 공간, 4K 화상회의, 베이커리 간식'},
-  {n:'패스트파이브 서울역1호점',loc:'서울역 도보 4분',r:4.5,rv:87,cap:20,vc:true,sn:true,pk:true,pr:140000,img:'🏛️',cls:'ri3',d:'최신 회의 장비, 스낵/커피 제공, 쾌적한 환경'},
-  {n:'르호봇 강남점',loc:'강남역 도보 2분',r:4.7,rv:145,cap:30,vc:true,sn:false,pk:true,pr:200000,img:'🏗️',cls:'ri1',d:'넓은 세미나실, 빔프로젝터, 30명 수용'},
-  {n:'저스트코 여의도점',loc:'여의도역 도보 1분',r:4.9,rv:67,cap:50,vc:true,sn:true,pk:true,pr:350000,img:'🌆',cls:'ri2',d:'한강뷰 대형 세미나실, 케이터링 서비스'},
+  {n:'위워크 서울역점 20F 대회의실',loc:'서울역 도보 3분',r:4.8,rv:120,cap:20,vc:true,sn:true,pk:true,pr:165000,img:'🏢',cls:'ri1',d:'고화질 화상회의 시스템, 화이트보드, 간식/음료 무제한 제공',img_url:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=200&fit=crop'},
+  {n:'스파크플러스 서울역센터',loc:'서울역 도보 5분',r:4.6,rv:98,cap:20,vc:true,sn:true,pk:true,pr:150000,img:'🏙️',cls:'ri2',d:'프라이빗 공간, 4K 화상회의, 베이커리 간식',img_url:'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=200&fit=crop'},
+  {n:'패스트파이브 서울역1호점',loc:'서울역 도보 4분',r:4.5,rv:87,cap:20,vc:true,sn:true,pk:true,pr:140000,img:'🏛️',cls:'ri3',d:'최신 회의 장비, 스낵/커피 제공, 쾌적한 환경',img_url:'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=200&fit=crop'},
+  {n:'르호봇 강남점',loc:'강남역 도보 2분',r:4.7,rv:145,cap:30,vc:true,sn:false,pk:true,pr:200000,img:'🏗️',cls:'ri1',d:'넓은 세미나실, 빔프로젝터, 30명 수용',img_url:'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=400&h=200&fit=crop'},
+  {n:'저스트코 여의도점',loc:'여의도역 도보 1분',r:4.9,rv:67,cap:50,vc:true,sn:true,pk:true,pr:350000,img:'🌆',cls:'ri2',d:'한강뷰 대형 세미나실, 케이터링 서비스',img_url:'https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=400&h=200&fit=crop'},
 ];
 const RESTS = [
-  {n:'온기정 서울역점',loc:'서울역 도보 6분',r:4.7,rv:356,mp:30,cu:'한식',rm:true,pk:true,pp:45000,img:'🥩',cls:'fi1',d:'프라이빗 룸 보유, 단체 코스 메뉴, 깔끔한 분위기'},
-  {n:'라쿠치나 서울역점',loc:'서울역 도보 7분',r:4.6,rv:212,mp:40,cu:'양식',rm:true,pk:true,pp:48000,img:'🍝',cls:'fi2',d:'단체 코스 가능, 다양한 주류, 세련된 인테리어'},
-  {n:'용중헌 서울스퀘어',loc:'서울역 도보 5분',r:4.5,rv:189,mp:30,cu:'중식',rm:true,pk:true,pp:55000,img:'🍱',cls:'fi3',d:'고급 중식 코스, 프라이빗 룸'},
-  {n:'하코야 강남본점',loc:'강남역 도보 4분',r:4.8,rv:520,mp:20,cu:'일식',rm:true,pk:false,pp:40000,img:'🍶',cls:'fi1',d:'일본식 이자카야, 개별룸 완비'},
-  {n:'여의도 한강뷰 BBQ',loc:'여의도역 도보 3분',r:4.6,rv:330,mp:50,cu:'한식',rm:true,pk:true,pp:60000,img:'🔥',cls:'fi2',d:'한강 뷰 테라스, 단체 바비큐'},
+  {n:'온기정 서울역점',loc:'서울역 도보 6분',r:4.7,rv:356,mp:30,cu:'한식',rm:true,pk:true,pp:45000,img:'🥩',cls:'fi1',d:'프라이빗 룸 보유, 단체 코스 메뉴, 깔끔한 분위기',img_url:'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=200&fit=crop'},
+  {n:'라쿠치나 서울역점',loc:'서울역 도보 7분',r:4.6,rv:212,mp:40,cu:'양식',rm:true,pk:true,pp:48000,img:'🍝',cls:'fi2',d:'단체 코스 가능, 다양한 주류, 세련된 인테리어',img_url:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=200&fit=crop'},
+  {n:'용중헌 서울스퀘어',loc:'서울역 도보 5분',r:4.5,rv:189,mp:30,cu:'중식',rm:true,pk:true,pp:55000,img:'🍱',cls:'fi3',d:'고급 중식 코스, 프라이빗 룸',img_url:'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=200&fit=crop'},
+  {n:'하코야 강남본점',loc:'강남역 도보 4분',r:4.8,rv:520,mp:20,cu:'일식',rm:true,pk:false,pp:40000,img:'🍶',cls:'fi1',d:'일본식 이자카야, 개별룸 완비',img_url:'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=400&h=200&fit=crop'},
+  {n:'여의도 한강뷰 BBQ',loc:'여의도역 도보 3분',r:4.6,rv:330,mp:50,cu:'한식',rm:true,pk:true,pp:60000,img:'🔥',cls:'fi2',d:'한강 뷰 테라스, 단체 바비큐',img_url:'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&h=200&fit=crop'},
 ];
 
 function parseQ(q) {
@@ -1029,7 +1155,7 @@ function parseQ(q) {
 function buildRoomCard(r,i) {
   return `<div class="card">
     <div class="cbadge">${i}</div><div class="cfav">♡</div>
-    <div class="cimg ${r.cls}">${r.img}</div>
+    <div class="cimg ${r.cls}"><img src="${r.img_url}" alt="${r.n}" loading="lazy" onerror="this.parentElement.innerHTML='${r.img}'"></div>
     <div class="cb">
       <div class="cn">${r.n}</div><div class="cl">📍 ${r.loc}</div>
       <div class="crat"><span class="st">★</span><span class="sc">${r.r}</span><span class="cnt">(${r.rv})</span></div>
@@ -1045,7 +1171,7 @@ function buildRoomCard(r,i) {
 function buildRestCard(r,i) {
   return `<div class="card">
     <div class="cbadge">${i}</div><div class="cfav">♡</div>
-    <div class="cimg ${r.cls}">${r.img}</div>
+    <div class="cimg ${r.cls}"><img src="${r.img_url}" alt="${r.n}" loading="lazy" onerror="this.parentElement.innerHTML='${r.img}'"></div>
     <div class="cb">
       <div class="cn">${r.n}</div><div class="cl">📍 ${r.loc}</div>
       <div class="crat"><span class="st">★</span><span class="sc">${r.r}</span><span class="cnt">(${r.rv})</span></div>
@@ -1124,7 +1250,6 @@ function openSidePanel() {
   panel.classList.remove('minimized');
   panel.classList.add('open');
   floatBtn.classList.remove('visible');
-  // restore position to default if first open or reset
   if (!panel.dataset.moved) {
     panel.style.right = '32px';
     panel.style.bottom = '90px';
@@ -1168,16 +1293,10 @@ function rpSwitch(tab) {
 (function() {
   let dragging = false, startX, startY, startLeft, startTop;
 
-  function getPos(panel) {
-    const rect = panel.getBoundingClientRect();
-    return { left: rect.left, top: rect.top };
-  }
-
   function startDrag(e) {
     const panel = document.getElementById('sidePanel');
     if (isMinimized === false || true) {
       dragging = true;
-      // Convert to left/top positioning
       const rect = panel.getBoundingClientRect();
       panel.style.left = rect.left + 'px';
       panel.style.top = rect.top + 'px';
@@ -1191,7 +1310,6 @@ function rpSwitch(tab) {
       startY = clientY - rect.top;
 
       panel.classList.add('dragging');
-      // remove animation during drag
       panel.style.animation = 'none';
     }
   }
@@ -1205,11 +1323,10 @@ function rpSwitch(tab) {
     let newLeft = clientX - startX;
     let newTop = clientY - startY;
 
-    // Clamp inside viewport
     const vw = window.innerWidth, vh = window.innerHeight;
     const pw = panel.offsetWidth, ph = panel.offsetHeight;
     newLeft = Math.max(0, Math.min(newLeft, vw - pw));
-    newTop = Math.max(0, Math.min(newTop, vh - 48)); // allow at least header visible
+    newTop = Math.max(0, Math.min(newTop, vh - 48));
 
     panel.style.left = newLeft + 'px';
     panel.style.top = newTop + 'px';
@@ -1226,11 +1343,9 @@ function rpSwitch(tab) {
   document.addEventListener('DOMContentLoaded', () => {
     const handle = document.getElementById('dragHandle');
     if (!handle) return;
-    // Mouse
     handle.addEventListener('mousedown', startDrag);
     document.addEventListener('mousemove', onDrag);
     document.addEventListener('mouseup', endDrag);
-    // Touch
     handle.addEventListener('touchstart', startDrag, {passive:false});
     document.addEventListener('touchmove', onDrag, {passive:false});
     document.addEventListener('touchend', endDrag);
@@ -1264,7 +1379,6 @@ function showToast(msg) {
 
 // ── CHARTS ──
 function initCharts() {
-  // Radar
   const rc = document.getElementById('radarChart');
   if(rc) new Chart(rc, {
     type:'radar',
@@ -1278,7 +1392,6 @@ function initCharts() {
     },
     options:{responsive:true,plugins:{legend:{display:false}},scales:{r:{min:0,max:5,ticks:{stepSize:1,font:{size:9}},pointLabels:{font:{size:10,family:"'Noto Sans KR',sans-serif"}}}}}
   });
-  // Donut
   const dc = document.getElementById('donutChart');
   if(dc) new Chart(dc, {
     type:'doughnut',
@@ -1295,7 +1408,6 @@ document.addEventListener('DOMContentLoaded', () => {
   shimStyle.textContent = '@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}';
   document.head.appendChild(shimStyle);
   updateNavActive('p1');
-  // Float button visible by default (panel starts closed)
   document.getElementById('floatBtn').classList.add('visible');
   checkShareParam();
 });
@@ -1313,7 +1425,7 @@ function buildShareUrl(id){const base=window.location.href.split('?')[0];return 
 async function saveShareSession(shareId){
   const session={id:shareId,createdAt:new Date().toISOString(),expiresAt:new Date(Date.now()+7*24*60*60*1000).toISOString(),
     query:document.getElementById('rsInput')?.value||'서울역 근처 20명 화상회의',cartItems:cartCnt,
-    participants:['이안선','최유진','박민수','정다은']};
+    participants:['오정세','최유진','박민수','정다은']};
   try{await window.storage.set(SHARE_PREFIX+shareId,JSON.stringify(session),true);}
   catch(e){try{localStorage.setItem(SHARE_PREFIX+shareId,JSON.stringify(session));}catch(_){}}
   return session;
@@ -1367,6 +1479,9 @@ function shareToEmail(){
   const body=encodeURIComponent('안녕하세요!\n\nSp\'ace에서 회의실 및 회식 장소를 함께 선택해주세요.\n\n🔗 링크: '+url+'\n\n감사합니다.');
   window.location.href='mailto:?subject='+sub+'&body='+body;
 }
+function shareKakao(){shareToKakao();}
+function shareSlack(){shareToSlack();}
+function shareEmail(){shareToEmail();}
 
 function showQR(){
   const area=document.getElementById('smQrArea');
@@ -1422,6 +1537,92 @@ function openTogetherFlow(){
 
 </script>
 
+<!-- REPORT PREVIEW MODAL -->
+<div id="reportModalBg" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:700;align-items:center;justify-content:center">
+  <div style="background:#f4f4f4;border-radius:12px;width:680px;max-width:95vw;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)">
+
+    <!-- 모달 상단 툴바 -->
+    <div style="background:#3a3a3a;padding:10px 18px;display:flex;align-items:center;justify-content:space-between">
+      <span style="color:#ccc;font-size:12.5px">보고서 미리보기</span>
+      <div style="display:flex;gap:8px">
+        <button onclick="window.print()" style="background:#555;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">🖨️ 인쇄</button>
+        <button onclick="closeReportModal()" style="background:#888;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">✕ 닫기</button>
+      </div>
+    </div>
+
+    <!-- A4 문서 영역 -->
+    <div style="overflow-y:auto;padding:32px;background:#f4f4f4">
+      <div id="reportPrintArea" style="background:#fff;width:100%;max-width:600px;margin:0 auto;padding:48px 52px;box-shadow:0 2px 16px rgba(0,0,0,.10);font-family:'Noto Sans KR',sans-serif;color:#1A1C2E">
+
+        <div style="text-align:center;margin-bottom:36px;border-bottom:2px solid #1A1C2E;padding-bottom:20px">
+          <div style="font-size:11px;color:#888;margin-bottom:6px">INTERNAL DOCUMENT</div>
+          <div style="font-size:20px;font-weight:900;letter-spacing:-.5px">회의 및 회식 장소 제안 보고서</div>
+          <div style="font-size:12px;color:#6B7280;margin-top:6px">작성일 : 2024년 5월 21일 &nbsp;|&nbsp; 작성자 : 오정세</div>
+        </div>
+
+        <!-- 1. 개요 -->
+        <div style="font-size:13px;font-weight:800;margin-bottom:8px">1. 개요</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:28px">
+          <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600;width:130px">목적</td><td style="padding:8px 12px;border:1px solid #ddd">팀 회의 및 회의 후 회식 장소 선정</td></tr>
+          <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">이용 예정일</td><td style="padding:8px 12px;border:1px solid #ddd">2024년 6월 5일 (수)</td></tr>
+          <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">참여 인원</td><td style="padding:8px 12px;border:1px solid #ddd">20명</td></tr>
+          <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">투표 참여</td><td style="padding:8px 12px;border:1px solid #ddd">4명 (오정세, 최유진, 박민수, 정다은)</td></tr>
+        </table>
+
+        <!-- 2. 선정 결과 -->
+        <div style="font-size:13px;font-weight:800;margin-bottom:8px">2. 최종 선정 결과</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:28px">
+          <thead>
+            <tr style="background:#1A1C2E;color:#fff">
+              <th style="padding:8px 12px;border:1px solid #ddd;text-align:left;font-weight:600">구분</th>
+              <th style="padding:8px 12px;border:1px solid #ddd;text-align:left;font-weight:600">선정 장소</th>
+              <th style="padding:8px 12px;border:1px solid #ddd;text-align:left;font-weight:600">위치</th>
+              <th style="padding:8px 12px;border:1px solid #ddd;text-align:left;font-weight:600">비용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">회의실</td><td style="padding:8px 12px;border:1px solid #ddd">위워크 서울역점 20F 대회의실</td><td style="padding:8px 12px;border:1px solid #ddd">서울역 도보 3분</td><td style="padding:8px 12px;border:1px solid #ddd">165,000원 (3시간)</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">회식 장소</td><td style="padding:8px 12px;border:1px solid #ddd">온기정 서울역점</td><td style="padding:8px 12px;border:1px solid #ddd">서울역 도보 6분</td><td style="padding:8px 12px;border:1px solid #ddd">45,000원 (1인당)</td></tr>
+          </tbody>
+        </table>
+
+        <!-- 3. 비용 내역 -->
+        <div style="font-size:13px;font-weight:800;margin-bottom:8px">3. 예상 비용 내역</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:28px">
+          <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">회의실 이용료</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:right">165,000원</td></tr>
+          <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">회식 비용 (20명)</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:right">900,000원</td></tr>
+          <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">부가세 (10%)</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:right">106,500원</td></tr>
+          <tr style="background:#1A1C2E;color:#fff"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:800">합계</td><td style="padding:8px 12px;border:1px solid #ddd;text-align:right;font-weight:800">1,171,500원</td></tr>
+        </table>
+
+        <div style="font-size:11px;color:#9CA3AF;border-top:1px solid #eee;padding-top:14px;text-align:center">
+          본 보고서는 Sp'ace를 통해 자동 생성되었습니다. &nbsp;|&nbsp; 2024.05.21
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+@media print {
+  body > *:not(#reportPrintArea) { display: none !important; }
+  #reportPrintArea { box-shadow: none !important; margin: 0 !important; padding: 32px !important; }
+}
+</style>
+
+<script>
+function openReportModal() {
+  const bg = document.getElementById('reportModalBg');
+  bg.style.display = 'flex';
+}
+function closeReportModal() {
+  document.getElementById('reportModalBg').style.display = 'none';
+}
+document.getElementById('reportModalBg').addEventListener('click', function(e) {
+  if (e.target === this) closeReportModal();
+});
+</script>
+
 <!-- SHARE MODAL -->
 <div class="share-modal-bg" id="shareModalBg" onclick="handleModalBgClick(event)">
   <div class="share-modal" id="shareModal">
@@ -1461,7 +1662,7 @@ function openTogetherFlow(){
         <div class="sm-participants">
           <div class="sm-share-title" style="margin-bottom:0">👥 참여 중인 팀원</div>
           <div class="sm-participant-list" id="smParticipants">
-            <div class="sm-part"><div class="sm-part-av" style="background:var(--p)">이</div><span class="sm-part-name">이안선(나)</span></div>
+            <div class="sm-part"><div class="sm-part-av" style="background:var(--p)">오</div><span class="sm-part-name">오정세(나)</span></div>
             <div class="sm-part"><div class="sm-part-av" style="background:#10B981">최</div><span class="sm-part-name">최유진</span></div>
             <div class="sm-part"><div class="sm-part-av" style="background:#8B5CF6">박</div><span class="sm-part-name">박민수</span></div>
             <div class="sm-part"><div class="sm-part-av" style="background:#F59E0B">정</div><span class="sm-part-name">정다은</span></div>

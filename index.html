@@ -300,7 +300,8 @@ canvas#radarChart{max-width:200px}
 .vc.winner{border-color:var(--ok);background:var(--okl)}
 .vc-rank{position:absolute;top:8px;left:8px;background:var(--p);color:#fff;border-radius:7px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
 .vc.winner .vc-rank{background:var(--ok)}
-.vc-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:42px}
+.vc-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden}
+.vc-img img{width:100%;height:100%;object-fit:cover;display:block}
 .vc-body{padding:12px}
 .vc-name{font-size:13px;font-weight:700;margin-bottom:3px}
 .vc-sub{font-size:11.5px;color:var(--s);margin-bottom:8px}
@@ -517,7 +518,7 @@ canvas#radarChart{max-width:200px}
     <button class="ni" onclick="goPage('p7')" id="ni-usage"><span class="ic">🕐</span>이용 내역</button>
     <button class="ni" onclick="goPage('p-report')" id="ni-report"><span class="ic">📊</span>보고서</button>
     <button class="ni" id="ni-fav"><span class="ic">♡</span>즐겨찾기</button>
-    <button class="ni" id="ni-mypage"><span class="ic">👤</span>마이페이지</button>
+    <button class="ni" onclick="goPage('p-mypage')" id="ni-mypage"><span class="ic">👤</span>마이페이지</button>
   </nav>
   <div class="sb-promo"><div style="font-size:11px;color:var(--s)">퇴근을 앞당기는 AI 비서</div><div class="pt">Sp'ace</div><div class="pd">회의실 예약부터 회식 장소 추천까지 한 번에 해결해요.</div><div style="text-align:center;font-size:32px;margin-top:8px">💼</div></div>
   <div class="sb-foot">🎧 고객센터</div>
@@ -596,9 +597,9 @@ canvas#radarChart{max-width:200px}
   <div class="ai-hint">✨ <span id="aiHintText">입력하신 조건에 맞는 장소를 AI가 선별했어요. 각 카드를 클릭해 더 자세한 정보를 확인해보세요.</span></div>
   <div class="results-layout">
     <div class="results-main">
-      <div class="sec-title">회의실 (화상회의 가능 · 20명 · 간식 제공)<span class="fl-link">+ 필터로 조건 설정</span></div>
+      <div class="sec-title">회의실 (화상회의 가능 · 20명 · 간식 제공)<span class="fl-link" onclick="focusFilter()">+ 필터로 조건 설정</span></div>
       <div class="cards" id="roomCards"></div>
-      <div class="sec-title" style="margin-top:4px">회식 장소 (회의 후 18:00 이후 · 서울역 인근)<span class="fl-link">+ 필터로 조건 설정</span></div>
+      <div class="sec-title" style="margin-top:4px">회식 장소 (회의 후 18:00 이후 · 서울역 인근)<span class="fl-link" onclick="focusFilter()">+ 필터로 조건 설정</span></div>
       <div class="cards" id="restCards"></div>
       <div class="ms-box">
         <span class="ms-i">✨</span>
@@ -720,9 +721,9 @@ canvas#radarChart{max-width:200px}
   <div class="vote-head"><h2>투표 결과 <span class="tag-done" style="font-size:13px">홈표</span></h2><p>팀원 4명이 참여하여 2024.05.21 10:35에 투표가 완료되었습니다.</p></div>
   <div style="font-size:14.5px;font-weight:700;margin-bottom:14px">최종 투표 결과 — 총 4표 참여</div>
   <div class="vote-cards">
-    <div class="vc winner"><div class="vc-rank">1위</div><div class="vc-img ri1">🏢</div><div class="vc-body"><div class="vc-name">위워크 서울역점 20F 대회의실</div><div class="vc-sub">회의실 · 서울역 도보 3분 · ⭐4.8(120)</div><div class="vc-bar"><div class="vc-bar-fill" style="width:75%"></div></div><div class="vc-votes">3표 (75%)</div></div></div>
-    <div class="vc"><div class="vc-rank">2위</div><div class="vc-img ri2">🏙️</div><div class="vc-body"><div class="vc-name">스파크플러스 서울역센터</div><div class="vc-sub">회의실 · 서울역 도보 5분 · ⭐4.6(98)</div><div class="vc-bar"><div class="vc-bar-fill" style="width:25%;background:var(--s)"></div></div><div class="vc-votes" style="color:var(--s)">1표 (25%)</div></div></div>
-    <div class="vc"><div class="vc-rank">3위</div><div class="vc-img ri3">🏛️</div><div class="vc-body"><div class="vc-name">패스트파이브 서울역1호점</div><div class="vc-sub">회의실 · 서울역 도보 4분 · ⭐4.5(87)</div><div class="vc-bar"><div class="vc-bar-fill" style="width:0%"></div></div><div class="vc-votes" style="color:var(--s)">0표 (0%)</div></div></div>
+    <div class="vc winner"><div class="vc-rank">1위</div><div class="vc-img ri1"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=240&fit=crop" alt="위워크 서울역점" onerror="this.parentElement.innerHTML='🏢'"></div><div class="vc-body"><div class="vc-name">위워크 서울역점 20F 대회의실</div><div class="vc-sub">회의실 · 서울역 도보 3분 · ⭐4.8(120)</div><div class="vc-bar"><div class="vc-bar-fill" style="width:75%"></div></div><div class="vc-votes">3표 (75%)</div></div></div>
+    <div class="vc"><div class="vc-rank">2위</div><div class="vc-img ri2"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&h=240&fit=crop" alt="스파크플러스 서울역센터" onerror="this.parentElement.innerHTML='🏙️'"></div><div class="vc-body"><div class="vc-name">스파크플러스 서울역센터</div><div class="vc-sub">회의실 · 서울역 도보 5분 · ⭐4.6(98)</div><div class="vc-bar"><div class="vc-bar-fill" style="width:25%;background:var(--s)"></div></div><div class="vc-votes" style="color:var(--s)">1표 (25%)</div></div></div>
+    <div class="vc"><div class="vc-rank">3위</div><div class="vc-img ri3"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=240&fit=crop" alt="패스트파이브 서울역1호점" onerror="this.parentElement.innerHTML='🏛️'"></div><div class="vc-body"><div class="vc-name">패스트파이브 서울역1호점</div><div class="vc-sub">회의실 · 서울역 도보 4분 · ⭐4.5(87)</div><div class="vc-bar"><div class="vc-bar-fill" style="width:0%"></div></div><div class="vc-votes" style="color:var(--s)">0표 (0%)</div></div></div>
   </div>
   <div class="vote-insight">
     <h4>투표 인사이트</h4>
@@ -758,8 +759,8 @@ canvas#radarChart{max-width:200px}
       </div>
     </div>
   </div>
-  <button class="btn-report" onclick="goPage('p5')">📄 보고서 초안 생성</button>
-  <div class="btn-report-hint">투표 결과를 바탕으로 상사용 보고서 초안을 자동으로 생성합니다.</div>
+  <button class="btn-report" onclick="genReport()">📄 보고서 초안 생성</button>
+  <div class="btn-report-hint">마이페이지에 등록한 자사 보고서 양식대로 상사용 컨펌 보고서를 자동으로 생성합니다.</div>
   </div>
   <div class="bbar">
     <div class="bbar-info"><span class="ic">🛒</span><strong>장바구니에 3개 담김</strong><span>· 회의실 2개, 회식 장소 1개</span></div>
@@ -772,7 +773,7 @@ canvas#radarChart{max-width:200px}
 <section class="page" id="p5">
   <div style="padding:20px 24px 100px">
   <div class="bc" onclick="goPage('p4')">← 뒤로가기</div>
-  <div class="rdraft-head"><h2>보고서 초안 <span class="tag-done">투표 완료</span></h2><p>투표 결과를 바탕으로 보고서 초안이 생성되었습니다. 내용을 검토 후 상사 승인요청을 진행하세요.</p></div>
+  <div class="rdraft-head"><h2>보고서 초안 <span class="tag-done">투표 완료</span> <span class="tag-done" id="draftTplTag" style="background:var(--okl);color:var(--ok)">표준 컨펌형 양식 적용</span></h2><p>마이페이지에 등록한 자사 보고서 양식대로 상사 보고용 컨펌 보고서가 생성되었습니다. 내용을 검토 후 상사 승인요청을 진행하세요.</p></div>
   <div class="doc-preview">
     <div class="doc-preview-head"><h3>회의 및 회식 장소 제안 보고서 (초안)</h3><button class="btn-pdf-sm">📄 보고서 PDF 미리보기</button></div>
     <div class="doc-body">
@@ -1017,6 +1018,100 @@ canvas#radarChart{max-width:200px}
   </div>
 </section>
 
+<!-- ══ PAGE MYPAGE ══ -->
+<section class="page" id="p-mypage">
+  <div style="padding:20px 24px 80px">
+    <div style="font-size:22px;font-weight:900;letter-spacing:-.5px;margin-bottom:4px">마이페이지</div>
+    <div style="font-size:13px;color:var(--s);margin-bottom:24px">프로필과 자사 보고서 양식을 관리하세요. 등록한 양식대로 상사 보고용 보고서가 자동 생성됩니다.</div>
+
+    <!-- 프로필 -->
+    <div style="background:var(--w);border-radius:14px;border:1px solid var(--br);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:16px">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">오</div>
+      <div style="flex:1">
+        <div style="font-size:17px;font-weight:800">오정세 <span style="font-size:12px;font-weight:600;color:var(--s)">· 기획팀 대리</span></div>
+        <div style="font-size:12.5px;color:var(--s);margin-top:2px">sunniesummer28@gmail.com · (주)스페이스컴퍼니</div>
+      </div>
+      <button onclick="showToast('프로필 편집은 준비 중이에요')" style="background:var(--w);border:1.5px solid var(--br);border-radius:9px;padding:8px 14px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--b)">프로필 편집</button>
+    </div>
+
+    <!-- 자사 보고서 양식 등록 -->
+    <div style="background:var(--w);border-radius:14px;border:1px solid var(--br);padding:22px;margin-bottom:20px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div style="font-size:16px;font-weight:800">📄 자사 보고서 양식 등록</div>
+        <span id="tplActiveBadge" style="background:var(--okl);color:var(--ok);font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px">적용 중 : 표준 컨펌형</span>
+      </div>
+      <div style="font-size:12.5px;color:var(--s);margin-bottom:18px">보고서 초안 생성 시 아래에서 선택한 양식과 머리말 정보가 그대로 반영됩니다.</div>
+
+      <!-- 양식 카드 3종 -->
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px">① 보고서 양식 선택</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px">
+        <div class="tpl-card" data-tpl="표준 컨펌형" onclick="selectTpl(this)" style="border:2px solid var(--p);background:var(--pl);border-radius:12px;padding:14px;cursor:pointer;transition:.15s">
+          <div style="height:74px;border-radius:8px;background:#fff;border:1px solid var(--br);padding:8px;margin-bottom:10px">
+            <div style="height:7px;background:#1A1C2E;border-radius:2px;margin-bottom:5px"></div>
+            <div style="height:4px;background:#d8def0;border-radius:2px;margin-bottom:3px"></div>
+            <div style="height:4px;background:#d8def0;border-radius:2px;width:70%;margin-bottom:6px"></div>
+            <div style="display:flex;gap:3px"><div style="flex:1;height:18px;background:#eef2fa;border-radius:2px"></div><div style="flex:1;height:18px;background:#eef2fa;border-radius:2px"></div></div>
+          </div>
+          <div style="font-size:13px;font-weight:700">표준 컨펌형</div>
+          <div style="font-size:11px;color:var(--s);margin-top:2px;line-height:1.4">개요·선정결과·비용표 중심의 결재용 표준 양식</div>
+        </div>
+        <div class="tpl-card" data-tpl="심플 요약형" onclick="selectTpl(this)" style="border:2px solid var(--br);background:var(--w);border-radius:12px;padding:14px;cursor:pointer;transition:.15s">
+          <div style="height:74px;border-radius:8px;background:#fff;border:1px solid var(--br);padding:8px;margin-bottom:10px">
+            <div style="height:7px;background:#1B6EF3;border-radius:2px;width:55%;margin-bottom:7px"></div>
+            <div style="height:4px;background:#e2e7f2;border-radius:2px;margin-bottom:3px"></div>
+            <div style="height:4px;background:#e2e7f2;border-radius:2px;margin-bottom:3px"></div>
+            <div style="height:4px;background:#e2e7f2;border-radius:2px;width:60%"></div>
+          </div>
+          <div style="font-size:13px;font-weight:700">심플 요약형</div>
+          <div style="font-size:11px;color:var(--s);margin-top:2px;line-height:1.4">핵심 결론과 한 장 요약 중심의 간결한 양식</div>
+        </div>
+        <div class="tpl-card" data-tpl="상세 분석형" onclick="selectTpl(this)" style="border:2px solid var(--br);background:var(--w);border-radius:12px;padding:14px;cursor:pointer;transition:.15s">
+          <div style="height:74px;border-radius:8px;background:#fff;border:1px solid var(--br);padding:8px;margin-bottom:10px">
+            <div style="height:7px;background:#1A1C2E;border-radius:2px;margin-bottom:5px"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px"><div style="height:13px;background:#eef2fa;border-radius:2px"></div><div style="height:13px;background:#eef2fa;border-radius:2px"></div><div style="height:13px;background:#eef2fa;border-radius:2px"></div><div style="height:13px;background:#eef2fa;border-radius:2px"></div></div>
+          </div>
+          <div style="font-size:13px;font-weight:700">상세 분석형</div>
+          <div style="font-size:11px;color:var(--s);margin-top:2px;line-height:1.4">비교·투표·리스크까지 담는 상세 분석 양식</div>
+        </div>
+      </div>
+
+      <!-- 머리말 정보 -->
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px">② 보고서 머리말 정보</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+        <div>
+          <div style="font-size:11.5px;color:var(--s);margin-bottom:5px">회사명 / 부서</div>
+          <input id="tplCompany" value="(주)스페이스컴퍼니 기획팀" style="width:100%;border:1.5px solid var(--br);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;outline:none">
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:var(--s);margin-bottom:5px">문서 분류</div>
+          <input id="tplDocType" value="INTERNAL DOCUMENT · 결재용" style="width:100%;border:1.5px solid var(--br);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;outline:none">
+        </div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="font-size:11.5px;color:var(--s);margin-bottom:5px">결재선 (승인자)</div>
+        <input id="tplApprover" value="김상우 팀장 → 이도현 본부장" style="width:100%;border:1.5px solid var(--br);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;outline:none">
+      </div>
+
+      <!-- 양식 파일 업로드(목업) -->
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px">③ 자사 양식 파일 (선택)</div>
+      <div onclick="document.getElementById('tplFile').click()" style="border:1.5px dashed var(--l);border-radius:10px;padding:18px;text-align:center;cursor:pointer;color:var(--s);margin-bottom:20px">
+        <div style="font-size:24px;margin-bottom:4px">📎</div>
+        <div id="tplFileName" style="font-size:12.5px;font-weight:600">자사 보고서 양식(.hwp/.docx/.pdf)을 업로드하세요</div>
+        <div style="font-size:11px;color:var(--l);margin-top:3px">업로드한 양식의 레이아웃을 AI가 학습해 동일하게 생성합니다</div>
+        <input id="tplFile" type="file" accept=".hwp,.docx,.pdf" style="display:none" onchange="onTplFile(this)">
+      </div>
+
+      <button onclick="saveTpl()" style="width:100%;background:var(--p);color:#fff;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">✅ 보고서 양식 저장</button>
+    </div>
+
+    <!-- 안내 -->
+    <div style="background:var(--pl);border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:12px">
+      <span style="font-size:20px">✨</span>
+      <div style="font-size:12.5px;color:var(--p);line-height:1.6"><strong>이렇게 동작해요</strong><br>투표 완료 후 <b>보고서 초안 생성</b>을 누르면, 여기서 등록한 <span id="tplHintName">표준 컨펌형</span> 양식과 머리말 정보가 그대로 적용된 상사 보고용 컨펌 보고서가 자동으로 만들어집니다.</div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- RIGHT SIDE PANEL -->
@@ -1090,9 +1185,9 @@ canvas#radarChart{max-width:200px}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
 // ── STATE ──
-const pages = ['p1','p2','p3','p4','p5','p6','p7','p-report'];
+const pages = ['p1','p2','p3','p4','p5','p6','p7','p-report','p-mypage'];
 let currentPage = 'p1';
-const stepMap = {p1:1,p2:2,p3:4,p4:5,p5:6,p6:7,p7:8,'p-report':6};
+const stepMap = {p1:1,p2:2,p3:4,p4:5,p5:6,p6:7,p7:8,'p-report':6,'p-mypage':1};
 
 // ── PAGE NAVIGATION ──
 function goPage(id) {
@@ -1119,7 +1214,7 @@ function updateStepBar(id) {
 }
 
 function updateNavActive(id) {
-  const map = {p1:'ni-home',p2:'ni-search',p6:'ni-cart',p7:'ni-usage','p-report':'ni-report'};
+  const map = {p1:'ni-home',p2:'ni-search',p6:'ni-cart',p7:'ni-usage','p-report':'ni-report','p-mypage':'ni-mypage'};
   document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
   const k = map[id];
   if(k) document.getElementById(k)?.classList.add('active');
@@ -1396,8 +1491,26 @@ function initCharts() {
   const dc = document.getElementById('donutChart');
   if(dc) new Chart(dc, {
     type:'doughnut',
-    data:{labels:['위워크(75%)','스파크플러스(25%)','패스트파이브(0%)'],datasets:[{data:[75,25,0],backgroundColor:['#1B6EF3','#10B981','#E5E9F2'],borderWidth:0}]},
-    options:{responsive:true,cutout:'65%',plugins:{legend:{display:false},tooltip:{enabled:true}}}
+    // 참여자 4명 전원을 각각 한 조각으로 표시(투표한 후보 색으로 구분)
+    data:{
+      labels:['오정세 → 위워크','박민수 → 위워크','정다은 → 위워크','최유진 → 스파크플러스'],
+      datasets:[{data:[1,1,1,1],backgroundColor:['#1B6EF3','#1B6EF3','#1B6EF3','#10B981'],borderColor:'#fff',borderWidth:2}]
+    },
+    options:{responsive:true,cutout:'62%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label}}}},
+    plugins:[{
+      id:'centerText',
+      afterDraw(chart){
+        const {ctx,chartArea:{left,right,top,bottom}}=chart;
+        const cx=(left+right)/2, cy=(top+bottom)/2;
+        ctx.save();
+        ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillStyle='#1A1C2E';ctx.font="800 17px 'Noto Sans KR',sans-serif";
+        ctx.fillText('4명',cx,cy-7);
+        ctx.fillStyle='#6B7280';ctx.font="600 10px 'Noto Sans KR',sans-serif";
+        ctx.fillText('전원 참여',cx,cy+10);
+        ctx.restore();
+      }
+    }]
   });
 }
 
@@ -1410,8 +1523,68 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(shimStyle);
   updateNavActive('p1');
   document.getElementById('floatBtn').classList.add('visible');
+  applyTplToReport();
   checkShareParam();
 });
+
+// ════════════════════════════════════════
+//  마이페이지 — 자사 보고서 양식
+// ════════════════════════════════════════
+const reportTpl = {
+  template: '표준 컨펌형',
+  company: '(주)스페이스컴퍼니 기획팀',
+  docType: 'INTERNAL DOCUMENT · 결재용',
+  approver: '김상우 팀장 → 이도현 본부장',
+  fileName: ''
+};
+
+function focusFilter(){
+  const fp=document.querySelector('#p2 .fp');
+  if(!fp) return;
+  fp.scrollIntoView({behavior:'smooth',block:'start'});
+  fp.style.transition='box-shadow .25s, border-color .25s';
+  fp.style.boxShadow='0 0 0 3px var(--pl)';
+  fp.style.borderColor='var(--p)';
+  setTimeout(()=>{fp.style.boxShadow='';fp.style.borderColor='';},1400);
+  showToast('🎛️ 직장인 특화 필터에서 조건을 설정해보세요');
+}
+function genReport(){
+  applyTplToReport();
+  showToast('📄 '+reportTpl.template+' 양식으로 보고서 초안을 생성했어요');
+  goPage('p5');
+}
+function selectTpl(card){
+  document.querySelectorAll('.tpl-card').forEach(c=>{
+    c.style.border='2px solid var(--br)';c.style.background='var(--w)';
+  });
+  card.style.border='2px solid var(--p)';card.style.background='var(--pl)';
+  reportTpl.template = card.dataset.tpl;
+  document.getElementById('tplActiveBadge').textContent='적용 중 : '+reportTpl.template;
+  document.getElementById('tplHintName').textContent=reportTpl.template;
+}
+function onTplFile(input){
+  const f=input.files&&input.files[0];
+  if(f){reportTpl.fileName=f.name;document.getElementById('tplFileName').textContent='📄 '+f.name+' (업로드됨)';}
+}
+function saveTpl(){
+  reportTpl.company=document.getElementById('tplCompany').value||reportTpl.company;
+  reportTpl.docType=document.getElementById('tplDocType').value||reportTpl.docType;
+  reportTpl.approver=document.getElementById('tplApprover').value||reportTpl.approver;
+  applyTplToReport();
+  showToast('✅ 보고서 양식이 저장되었습니다');
+}
+// 등록한 양식을 보고서 초안(p5)·미리보기 문서에 반영
+function applyTplToReport(){
+  const t=reportTpl;
+  // 보고서 초안 헤더
+  const draftTag=document.getElementById('draftTplTag');
+  if(draftTag) draftTag.textContent=t.template+' 양식 적용';
+  // A4 미리보기 문서
+  const dt=document.getElementById('rptDocType'); if(dt) dt.textContent=t.docType;
+  const cn=document.getElementById('rptCompany'); if(cn) cn.textContent=t.company;
+  const ap=document.getElementById('rptApprover'); if(ap) ap.textContent=t.approver;
+  const tn=document.getElementById('rptTplName'); if(tn) tn.textContent=t.template;
+}
 
 // ════════════════════════════════════════
 //  SHARE URL SYSTEM
@@ -1556,7 +1729,8 @@ function openTogetherFlow(){
       <div id="reportPrintArea" style="background:#fff;width:100%;max-width:600px;margin:0 auto;padding:48px 52px;box-shadow:0 2px 16px rgba(0,0,0,.10);font-family:'Noto Sans KR',sans-serif;color:#1A1C2E">
 
         <div style="text-align:center;margin-bottom:36px;border-bottom:2px solid #1A1C2E;padding-bottom:20px">
-          <div style="font-size:11px;color:#888;margin-bottom:6px">INTERNAL DOCUMENT</div>
+          <div style="font-size:11px;color:#888;margin-bottom:6px" id="rptDocType">INTERNAL DOCUMENT · 결재용</div>
+          <div style="font-size:13px;font-weight:700;color:#1B6EF3;margin-bottom:4px" id="rptCompany">(주)스페이스컴퍼니 기획팀</div>
           <div style="font-size:20px;font-weight:900;letter-spacing:-.5px">회의 및 회식 장소 제안 보고서</div>
           <div style="font-size:12px;color:#6B7280;margin-top:6px">작성일 : 2024년 5월 21일 &nbsp;|&nbsp; 작성자 : 오정세</div>
         </div>
@@ -1568,6 +1742,7 @@ function openTogetherFlow(){
           <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">이용 예정일</td><td style="padding:8px 12px;border:1px solid #ddd">2024년 6월 5일 (수)</td></tr>
           <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">참여 인원</td><td style="padding:8px 12px;border:1px solid #ddd">20명</td></tr>
           <tr><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">투표 참여</td><td style="padding:8px 12px;border:1px solid #ddd">4명 (오정세, 최유진, 박민수, 정다은)</td></tr>
+          <tr style="background:#f8f8f8"><td style="padding:8px 12px;border:1px solid #ddd;font-weight:600">결재선</td><td style="padding:8px 12px;border:1px solid #ddd" id="rptApprover">김상우 팀장 → 이도현 본부장</td></tr>
         </table>
 
         <!-- 2. 선정 결과 -->
@@ -1609,7 +1784,7 @@ function openTogetherFlow(){
         </table>
 
         <div style="font-size:11px;color:#9CA3AF;border-top:1px solid #eee;padding-top:14px;text-align:center">
-          본 보고서는 Sp'ace를 통해 자동 생성되었습니다. &nbsp;|&nbsp; 2024.05.21
+          본 보고서는 Sp'ace에서 <strong id="rptTplName">표준 컨펌형</strong> 양식으로 자동 생성되었습니다. &nbsp;|&nbsp; 2024.05.21
         </div>
       </div>
     </div>

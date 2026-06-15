@@ -511,16 +511,16 @@ canvas#radarChart{max-width:200px}
 <aside class="sb">
   <div class="sb-logo"><h1>Sp'ace</h1><p>AI 업무 예약 플랫폼</p></div>
   <nav class="sb-nav">
-    <button class="ni" onclick="goPage('p1')" id="ni-home"><span class="ic">🏠</span>홈</button>
-    <button class="ni" onclick="goPage('p2')" id="ni-search"><span class="ic">🔍</span>검색</button>
-    <button class="ni" onclick="goPage('p-reserve')" id="ni-reserve"><span class="ic">📋</span>예약 현황</button>
-    <button class="ni" onclick="goPage('p6')" id="ni-cart"><span class="ic">🛒</span>장바구니<span class="nbadge" id="cart-badge">3</span></button>
-    <button class="ni" onclick="goPage('p7')" id="ni-usage"><span class="ic">🕐</span>이용 내역</button>
-    <button class="ni" onclick="goPage('p-report')" id="ni-report"><span class="ic">📊</span>보고서</button>
-    <button class="ni" id="ni-fav"><span class="ic">♡</span>즐겨찾기</button>
-    <button class="ni" onclick="goPage('p-mypage')" id="ni-mypage"><span class="ic">👤</span>마이페이지</button>
+    <button class="ni" onclick="goPage('p1')" id="ni-home">홈</button>
+    <button class="ni" onclick="goPage('p2')" id="ni-search">검색</button>
+    <button class="ni" onclick="goPage('p-reserve')" id="ni-reserve">예약 현황</button>
+    <button class="ni" onclick="goPage('p6')" id="ni-cart">장바구니<span class="nbadge" id="cart-badge">3</span></button>
+    <button class="ni" onclick="goPage('p7')" id="ni-usage">이용 내역</button>
+    <button class="ni" onclick="goPage('p-report')" id="ni-report">보고서</button>
+    <button class="ni" id="ni-fav">즐겨찾기</button>
+    <button class="ni" onclick="goPage('p-mypage')" id="ni-mypage">마이페이지</button>
   </nav>
-  <div class="sb-promo"><div style="font-size:11px;color:var(--s)">퇴근을 앞당기는 AI 비서</div><div class="pt">Sp'ace</div><div class="pd">회의실 예약부터 회식 장소 추천까지 한 번에 해결해요.</div><div style="text-align:center;font-size:32px;margin-top:8px">💼</div></div>
+  <div class="sb-promo"><div style="font-size:11px;color:var(--s)">퇴근을 앞당기는 AI 비서</div><div class="pt">Sp'ace</div><div class="pd">회의실 예약부터 회식 장소 추천까지 한 번에 해결해요.</div></div>
   <div class="sb-foot">🎧 고객센터</div>
 </aside>
 
@@ -562,10 +562,8 @@ canvas#radarChart{max-width:200px}
     <p>자연어로 검색하고, 비교하고, 예약까지 한 번에</p>
   </div>
   <div class="sbox" style="max-width:800px;margin:0 auto">
-    <div class="sbox-icon">✨</div>
     <input id="homeInput" value="서울역 근처 20명 화상회의 가능하고 간식 제공하는 회의실, 회의 후 6시 인근 장소에서 회식" placeholder="원하는 조건을 자연어로 입력해보세요">
-    <span class="clr" onclick="document.getElementById('homeInput').value=''">✕</span>
-    <button class="btn-srch" onclick="doSearch()">🔍 검색</button>
+    <button class="btn-srch" onclick="doSearch()">검색</button>
   </div>
   <div class="kw-section">
     <div class="kw-head"><span>추천 키워드로 더 빠르게 검색해보세요</span><span class="kw-refresh">🔄 새로고침</span></div>
@@ -589,7 +587,6 @@ canvas#radarChart{max-width:200px}
   <div style="padding:20px 24px 90px">
   <div class="bc" onclick="goPage('p1')">← 검색 결과</div>
   <div class="rsbox">
-    <div style="font-size:17px;color:var(--p)">✨</div>
     <input id="rsInput" value="서울역 근처 20명 화상회의 가능하고 간식 제공하는 회의실, 회의 후 6시 인근 장소에서 회식">
     <button class="btn-edit" onclick="goPage('p1')">수정 검색</button>
   </div>
@@ -731,9 +728,10 @@ canvas#radarChart{max-width:200px}
       <div class="donut-wrap">
         <canvas id="donutChart" width="140" height="140"></canvas>
         <div class="donut-legend" style="width:100%">
-          <div class="dl-item"><span class="dl-dot" style="background:var(--p)"></span>위워크 서울역점 75%(3표)</div>
-          <div class="dl-item"><span class="dl-dot" style="background:#10B981"></span>스파크플러스 25%(1표)</div>
-          <div class="dl-item"><span class="dl-dot" style="background:#E5E9F2"></span>패스트파이브 0%(0표)</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#1B6EF3"></span>오정세 → 위워크 서울역점</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#10B981"></span>최유진 → 스파크플러스</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#8B5CF6"></span>박민수 → 위워크 서울역점</div>
+          <div class="dl-item"><span class="dl-dot" style="background:#F59E0B"></span>정다은 → 위워크 서울역점</div>
         </div>
       </div>
       <div class="parti-wrap">
@@ -1173,11 +1171,6 @@ canvas#radarChart{max-width:200px}
   </div>
 </div>
 
-<!-- FLOATING TRIGGER BUTTON (shows when panel is closed) -->
-<button class="float-btn" id="floatBtn" onclick="openTogetherFlow()">
-  👥 함께 고르기
-  <span class="float-btn-badge" id="floatBadge">3</span>
-</button>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -1340,12 +1333,10 @@ let isMinimized = false;
 
 function openSidePanel() {
   const panel = document.getElementById('sidePanel');
-  const floatBtn = document.getElementById('floatBtn');
   panelOpen = true;
   isMinimized = false;
   panel.classList.remove('minimized');
   panel.classList.add('open');
-  floatBtn.classList.remove('visible');
   if (!panel.dataset.moved) {
     panel.style.right = '32px';
     panel.style.bottom = '90px';
@@ -1357,12 +1348,10 @@ function openSidePanel() {
 function closeSidePanel(e) {
   if (e) e.stopPropagation();
   const panel = document.getElementById('sidePanel');
-  const floatBtn = document.getElementById('floatBtn');
   panelOpen = false;
   isMinimized = false;
   panel.classList.remove('open');
   panel.classList.remove('minimized');
-  floatBtn.classList.add('visible');
 }
 
 function toggleMinimize(e) {
@@ -1493,8 +1482,8 @@ function initCharts() {
     type:'doughnut',
     // 참여자 4명 전원을 각각 한 조각으로 표시(투표한 후보 색으로 구분)
     data:{
-      labels:['오정세 → 위워크','박민수 → 위워크','정다은 → 위워크','최유진 → 스파크플러스'],
-      datasets:[{data:[1,1,1,1],backgroundColor:['#1B6EF3','#1B6EF3','#1B6EF3','#10B981'],borderColor:'#fff',borderWidth:2}]
+      labels:['오정세 → 위워크','최유진 → 스파크플러스','박민수 → 위워크','정다은 → 위워크'],
+      datasets:[{data:[1,1,1,1],backgroundColor:['#1B6EF3','#10B981','#8B5CF6','#F59E0B'],borderColor:'#fff',borderWidth:2}]
     },
     options:{responsive:true,cutout:'62%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label}}}},
     plugins:[{
@@ -1522,7 +1511,6 @@ document.addEventListener('DOMContentLoaded', () => {
   shimStyle.textContent = '@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}';
   document.head.appendChild(shimStyle);
   updateNavActive('p1');
-  document.getElementById('floatBtn').classList.add('visible');
   applyTplToReport();
   checkShareParam();
 });
